@@ -1,7 +1,8 @@
+import { BASE_URL } from "@/constants";
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.INVENTORY_API, // Replace with your API base URL
+  baseURL: BASE_URL,
   timeout: 1000,
   headers: { "Content-Type": "application/json" },
 });

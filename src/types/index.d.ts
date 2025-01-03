@@ -5,3 +5,9 @@ declare type Inventory = {
     quantity: number;
     price: string;
 }
+
+declare type CardType = {
+    title: string;
+    icon: () => React.ReactElement;
+    value?: number
+}
