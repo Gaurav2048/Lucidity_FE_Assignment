@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { InventoryAtom } from './AppState';
 import "@/mock/mock.tsx";
+import { produce } from 'immer';
+import { v4 as uuidV4 } from "uuid";
 
 
 export default function App() {
@@ -22,7 +24,11 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    if (!!inventoryResponse) setInventory(inventoryResponse)
+    if (!!inventoryResponse) {
+      setInventory(produce(inventoryResponse, draft => {
+        return draft.map((item: Inventory) => ({ ...item, id: uuidV4() }))
+      }))
+    }
   }, [inventoryResponse])
 
   useEffect(() => {

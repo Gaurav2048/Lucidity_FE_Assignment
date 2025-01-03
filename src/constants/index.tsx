@@ -4,7 +4,7 @@ export const STORE_KEYS = {
     INVENTORY: "inventory"
 }
 
-export const INVENTORY_HEADERS = ["Name", "Category", "Price", "Quantity", "Value", "Actions"]
+export const INVENTORY_HEADERS = ["Name", "Category", "Value", "Quantity", "Price", "Actions"]
 
 export const ROUTES = {
     FETCH_INVENTORY_URL: "inventory"
