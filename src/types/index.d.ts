@@ -23,3 +23,5 @@ declare type CardType = {
     icon: () => React.ReactElement;
     value?: number
 }
+
+declare type AccessType = "ADMIN" | "USER"

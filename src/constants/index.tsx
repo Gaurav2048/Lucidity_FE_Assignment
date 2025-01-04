@@ -1,7 +1,8 @@
 import { AppNumCategory, AppOutOfStock, AppStoreValue, AppTotalProduct } from "@/AppIcon"
 
 export const STORE_KEYS = {
-    INVENTORY: "inventory"
+    INVENTORY: "inventory",
+    ACCESS_TYPE: "access_type"
 }
 
 export const INVENTORY_HEADERS = ["Name", "Category", "Value", "Quantity", "Price", "Actions"]
@@ -34,3 +35,20 @@ export const APP_CARD_INFO: Array<CardType> = [
         value: 0
     }
 ]
+
+export const USER_ROLES = {
+    ADMIN: "ADMIN",
+    USER: "USER"
+}
+
+export const ACCESS_TYPES = {
+   ADMIN_PAGE: "admin",
+   INVENTORY_EDIT: "edit",
+   USER_PAGE: "user",
+   INVENTORY_VIEW: "view"
+}
+
+export const PERMISSIONS = {
+    [USER_ROLES.ADMIN]: [ACCESS_TYPES.ADMIN_PAGE, ACCESS_TYPES.INVENTORY_EDIT],
+    [USER_ROLES.USER]: [ACCESS_TYPES.USER_PAGE, ACCESS_TYPES.INVENTORY_VIEW]
+}

@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useRecoilState } from 'recoil';
-import { InventoryAtom } from '@/AppState';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { AccessTypeAtom, InventoryAtom } from '@/AppState';
 import { useParams } from 'react-router-dom';
 import InventoryFields from '@/Pages/InventoryForm/InventoryFields';
 import AppModal from '@/components/AppModal';
@@ -10,15 +10,6 @@ import useNavDisclosure from '@/hooks/useNavDisclosure';
 import { currencyConverter } from '@/utils/utils';
 import { produce } from 'immer';
 
-const initialValues: InventoryForm = {
-  id: '',
-  name: '',
-  category: '',
-  value: 0,
-  quantity: 0,
-  price: 0,
-  disable: false
-};
 
 // Define Yup validation schema
 const validationSchema = Yup.object({
@@ -34,6 +25,7 @@ const validationSchema = Yup.object({
 const ItemForm: React.FC = () => {
   const { productId } = useParams()
   const [inventory, setInventory] = useRecoilState(InventoryAtom)
+  const accessType = useRecoilValue(AccessTypeAtom)
   const currentItem = inventory.find(item => item.id === productId)!
   const currentItemFormData: InventoryForm = {
     ...currentItem,
@@ -41,7 +33,7 @@ const ItemForm: React.FC = () => {
     price: currencyConverter(currentItem?.price)
 
   }
-  const { open: openModal, goBack } = useNavDisclosure("edit")
+  const { open: openModal, goBack } = useNavDisclosure(["edit", "view"])
 
   const handleClose = () => goBack()
 
@@ -71,7 +63,7 @@ const ItemForm: React.FC = () => {
       enableReinitialize
     >
       {({ submitForm }) => (
-        <AppModal open={openModal} onClose={handleClose} onSubmit={submitForm}>
+        <AppModal open={openModal} onClose={handleClose} onSubmit={accessType === "ADMIN" ? submitForm : undefined}>
             <InventoryFields />
         </AppModal>
       )}

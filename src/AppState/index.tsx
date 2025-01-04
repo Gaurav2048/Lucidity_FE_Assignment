@@ -6,6 +6,13 @@ const InventoryAtom = atom<Array<Inventory>>({
     default: []
 })
 
+
+const AccessTypeAtom = atom<AccessType>({
+    key: STORE_KEYS.ACCESS_TYPE,
+    default: "ADMIN"
+})
+
 export {
-    InventoryAtom
+    InventoryAtom,
+    AccessTypeAtom
 }

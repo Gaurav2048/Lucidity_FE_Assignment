@@ -1,8 +1,16 @@
 import { Switch } from '@headlessui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const AppSwitch: React.FC = () =>  {
+type OwnProps = {
+  onChange: (val: boolean) => void
+}
+
+const AppSwitch: React.FC<OwnProps> = ({ onChange }) =>  {
   const [enabled, setEnabled] = useState(false)
+
+  useEffect(() => {
+    onChange(enabled)
+  }, [enabled])
 
   return (
     <Switch

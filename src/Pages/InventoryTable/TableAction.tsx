@@ -1,14 +1,15 @@
 import { AppDelete, AppEdit, AppEyeClose, AppEyeOpen } from "@/AppIcon"
-import { InventoryAtom } from "@/AppState"
+import { AccessTypeAtom, InventoryAtom } from "@/AppState"
 import { produce } from "immer"
 import { useNavigate } from "react-router-dom"
-import { useRecoilState } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 
 const TableAction: React.FC<Inventory> = ({
     id, disable
 }) => {
 
     const [inventory, setInventory] = useRecoilState(InventoryAtom)
+    const accessType = useRecoilValue(AccessTypeAtom)
 
     const navigate = useNavigate()
 
@@ -16,10 +17,11 @@ const TableAction: React.FC<Inventory> = ({
 
     const handleEdit = () => {
         if (disable) return
-        navigate(`edit/${id}`)
+        navigate(`${accessType === 'USER' ? 'view' : 'edit'}/${id}`)
     }
 
     const toggleDisable = () => {
+        if (accessType === "USER") return
         setInventory(produce(inventory, draft => {
             draft.map(item => {
                 if (item.id === id) {
@@ -32,7 +34,7 @@ const TableAction: React.FC<Inventory> = ({
     }
 
     const removeItem = () => {
-        if (disable) return
+        if (disable || accessType === "USER") return
         setInventory(produce(inventory, draft => {
             return draft.filter(item => item.id !== id)
         }))
