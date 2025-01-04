@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
 interface TableProps {
   children: ReactNode;
@@ -7,7 +7,9 @@ interface TableProps {
 const AppTable: React.FC<TableProps> = ({ children }) => {
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full table-auto border-collapse">{children}</table>
+      <table className="min-w-full table-auto border-collapse">
+        {children}
+      </table>
     </div>
   );
 };

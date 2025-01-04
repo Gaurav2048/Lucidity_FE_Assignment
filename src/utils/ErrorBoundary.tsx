@@ -1,7 +1,7 @@
 import React, { ReactNode, ErrorInfo } from "react";
 
 interface ErrorBoundaryProps {
-  children: ReactNode; 
+  children: ReactNode;
 }
 
 interface ErrorBoundaryState {
@@ -10,7 +10,10 @@ interface ErrorBoundaryState {
   errorInfo: ErrorInfo | null;
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = {
@@ -41,7 +44,9 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
           <details className="mt-2 text-gray-600">
             <summary>View error details</summary>
             <pre className="text-xs">{this.state.error?.message}</pre>
-            <pre className="text-xs">{this.state.errorInfo?.componentStack}</pre>
+            <pre className="text-xs">
+              {this.state.errorInfo?.componentStack}
+            </pre>
           </details>
         </div>
       );

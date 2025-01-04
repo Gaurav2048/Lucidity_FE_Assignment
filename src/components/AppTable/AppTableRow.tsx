@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
 interface TableRowProps {
   children: ReactNode;
@@ -7,14 +7,9 @@ interface TableRowProps {
 }
 
 const TableRow: React.FC<TableRowProps> = ({ children, isEven, disabled }) => {
-  
-    const bgColor = disabled ? 'bg-gray-200' : isEven ? 'bg-white' : 'bg-gray-50'
-  
-    return (
-    <tr className={`${bgColor} border-t`}>
-      {children}
-    </tr>
-  );
+  const bgColor = disabled ? "bg-gray-200" : isEven ? "bg-white" : "bg-gray-50";
+
+  return <tr className={`${bgColor} border-t`}>{children}</tr>;
 };
 
 export default TableRow;

@@ -1,16 +1,16 @@
-import { Switch } from '@headlessui/react'
-import { useEffect, useState } from 'react'
+import { Switch } from "@headlessui/react";
+import { useEffect, useState } from "react";
 
 type OwnProps = {
-  onChange: (val: boolean) => void
-}
+  onChange: (val: boolean) => void;
+};
 
-const AppSwitch: React.FC<OwnProps> = ({ onChange }) =>  {
-  const [enabled, setEnabled] = useState(false)
+const AppSwitch: React.FC<OwnProps> = ({ onChange }) => {
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    onChange(enabled)
-  }, [enabled])
+    onChange(enabled);
+  }, [enabled]);
 
   return (
     <Switch
@@ -23,7 +23,7 @@ const AppSwitch: React.FC<OwnProps> = ({ onChange }) =>  {
         className="pointer-events-none inline-block size-5 translate-x-0 rounded-full bg-white ring-0 shadow-lg transition duration-200 ease-in-out group-data-[checked]:translate-x-7"
       />
     </Switch>
-  )
-}
+  );
+};
 
 export default AppSwitch;

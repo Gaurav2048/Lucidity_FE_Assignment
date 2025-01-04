@@ -1,9 +1,9 @@
-import React from 'react';
-import Navigation from '@components/AppNavigation';
+import React from "react";
+import Navigation from "@components/AppNavigation";
 
 type OwnProps = {
-    children: React.ReactElement
-}
+  children: React.ReactElement;
+};
 
 const Layout: React.FC<OwnProps> = ({ children }) => {
   return (

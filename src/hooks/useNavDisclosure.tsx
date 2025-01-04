@@ -9,9 +9,8 @@ const useNavDisclosure = (segment: string | string[]) => {
     if (typeof segment === "string") {
       return location.pathname.includes(segment);
     } else {
-      return segment.some(phrase => location.pathname.includes(phrase))
+      return segment.some((phrase) => location.pathname.includes(phrase));
     }
-    
   }, [location.pathname]);
 
   const goBack = () => navigate(-1);

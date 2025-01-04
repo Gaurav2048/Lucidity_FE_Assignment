@@ -7,14 +7,13 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
-
 export {
-    IoCart as               AppTotalProduct,
-    RiExchangeDollarLine as AppStoreValue,
-    MdRemoveShoppingCart as AppOutOfStock,
-    MdCategory as           AppNumCategory,
-    MdModeEdit as           AppEdit,
-    FaEye      as           AppEyeOpen,
-    FaEyeSlash as           AppEyeClose,
-    MdDelete   as           AppDelete
-}
+  IoCart as AppTotalProduct,
+  RiExchangeDollarLine as AppStoreValue,
+  MdRemoveShoppingCart as AppOutOfStock,
+  MdCategory as AppNumCategory,
+  MdModeEdit as AppEdit,
+  FaEye as AppEyeOpen,
+  FaEyeSlash as AppEyeClose,
+  MdDelete as AppDelete,
+};
