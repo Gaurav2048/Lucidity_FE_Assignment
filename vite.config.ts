@@ -10,13 +10,4 @@ export default defineConfig({
       "@": "/src",
     },
   },
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://dev-0tf0hinghgjl39z.api.raw-labs.com",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
-  },
 });

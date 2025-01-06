@@ -1,6 +1,9 @@
-import { BASE_URL, ROUTES } from "@/constants";
+import { ROUTES } from "@/constants";
 import { http, HttpResponse } from "msw";
 import { setupWorker } from "msw/browser";
+const BASE_URL = import.meta.env.VITE_INVENTORY_BASE_URL
+
+console.log("from mock", BASE_URL)
 
 // 2. Describe network behavior with request handlers.
 const worker = setupWorker(
@@ -46,4 +49,7 @@ const worker = setupWorker(
 );
 
 // start local mocking server
-worker.start();
+// worker.start();
+
+export default worker;
+

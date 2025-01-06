@@ -11,12 +11,6 @@ type OwnProps = {
 const HandlePermissions: React.FC<OwnProps> = ({ children }) => {
   const currentUserAccessType = useRecoilValue(AccessTypeAtom);
   const location = useLocation();
-  console.log(PERMISSIONS, currentUserAccessType);
-  console.log(
-    PERMISSIONS[currentUserAccessType]?.find((page) =>
-      location.pathname.includes(page),
-    ),
-  );
 
   return PERMISSIONS[currentUserAccessType]?.find((page) =>
     location.pathname.includes(page),

@@ -10,7 +10,7 @@ import { produce } from "immer";
 import { v4 as uuidV4 } from "uuid";
 
 export default function App() {
-  const [inventory, setInventory] = useRecoilState(InventoryAtom);
+  const [_, setInventory] = useRecoilState(InventoryAtom);
 
   const {
     fetchData,
@@ -34,10 +34,6 @@ export default function App() {
       );
     }
   }, [inventoryResponse]);
-
-  useEffect(() => {
-    console.log(inventory);
-  }, [inventory]);
 
   return loading ? <div>Loading ...</div> : <AppRouter />;
 }
